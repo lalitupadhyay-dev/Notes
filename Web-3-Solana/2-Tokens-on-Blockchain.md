@@ -10,6 +10,8 @@ Examples:
 - SOL is the native coin of Solana
 - USDC, USDT, and other assets are tokens created on Solana
 
+<img src="./imgs/sol-token.png" />
+
 ---
 
 ## Coin vs Token
@@ -45,6 +47,8 @@ Characteristics:
 Examples:
 - USDC
 - USDT
+
+<img src="./imgs/token-types.png" />
 
 ---
 
