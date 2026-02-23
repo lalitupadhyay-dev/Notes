@@ -79,17 +79,14 @@ Every Account has a maximum size of 10MiB (Mebibytes) equal to **2^20 bytes** an
 
 - Do not contain executable code
 
-    - To create a <span style="color: #00ffbd;">**Program State Account**</span>:
-        - Invoke <span style="color: #00ffbd;">**System Program**</span> to create the account
-        - After creation of new account the ownership is transferred to a new program
-        - Account data gets initialized
+- To create a <span style="color: #00ffbd;">**Program State Account**</span>:
+    - Invoke <span style="color: #00ffbd;">**System Program**</span> to create the account
+    - After creation of new account the ownership is transferred to a new program
+    - Account data gets initialized
+    - BPF loader creates a Program Account -> Program Data Account -> Program code is stored
+    - When Program executes a Data account is created by **System Program**
+    - Then data is stored in this account
 
 <br>
 
 <img src="./imgs/data-account.png" />
-
-<br>
-
-- BPF loader creates a Program Account -> Program Data Account -> Program code is stored
-- When Program executes a Data account is created by **System Program**
-- Then data is stored in this account
