@@ -46,8 +46,13 @@ const promise = new Promise((resolve, reject) => {
 
 - These methods are used to consume a promise:
   - <code style="color: rgb(198, 198, 198);">.then()</code> - handles success
+
   - <code style="color: rgb(198, 198, 198);">.catch()</code> - handles failure
-  - <code style="color: rgb(198, 198, 198);">.finally()</code> - runs always
+
+  - <code style="color: rgb(198, 198, 198);">.finally()</code> - runs always for cleanup
+    - No arguements
+    - **.finally(() => { })** handler should not return anything, if returned something then it's ignored
+
 
 ## Promise Chaining:
 
