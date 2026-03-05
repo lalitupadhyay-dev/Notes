@@ -98,6 +98,39 @@
         None => println!("No character is found!"),
     }
     ```
+- Difference between "String" and "&str"
+
+    <span style="color: rgb(0, 168, 228)">**String:**</span>
+    
+    **What it is?**
+
+    1. A heap-allocated, growable string
+    2. Owns its data
+    3. Mutable (if declared mut) <br>
+
+    **Properties:**
+
+    1. Stored on heap
+    2. Has ownership
+    3. Can grow/shrink
+    4. More memory overhead (capacity management)
+
+    <span style="color: rgb(0, 168, 228)">**&str**</span>
+    
+    What it is:
+    1. A borrowed reference to a string
+    2. Does NOT own the data
+    3. Fixed size (cannot grow)
+
+    Properties:
+
+    1. Points to existing string data
+    2. Stored as:
+        - pointer
+        - length
+    3. Cannot modify contents
+    4. Lightweight
 
 ## Mutability in Variables:
 - Using <code>**mut**</code> keyword
+
