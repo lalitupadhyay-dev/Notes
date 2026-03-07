@@ -44,6 +44,42 @@ Let's see how HTTP evolved during the past years
     </html>
     ```
 
+### 1.1.3 HTTP/1.0
+
+- <code>**Status codes**</code> were introduced
+
+- <code>**Headers**</code> were introduced to share metadata
+
+- Connections were not persistent - *for every <code>**Request-Response**</code> a new <code>**TCP Connection**</code> is created, resulted in slowing down the website*
+
+- New <code>**HTTP methods**</code> were introduced:
+    - POST
+    - HEAD
+
+- Supported different content types with the help of <code>Content-Type</code> header
+    - HTML
+    - CSS
+    - PDFs
+    - Images
+    - Videos
+
+- HTTP Request & Response looked like this
+    ```js
+    // Request
+    GET /index.html HTTP/1.0
+    Host: example.com
+    User-Agent: Mozilla/5.0
+    Accept: text/html
+
+    // Response
+    HTTP/1.0 200 OK
+    Content-Type: text/html
+    Content-Length: 120
+
+    <html>
+        <body>Hello</body>
+    </html>
+    ```
 
 ## HTTP Request
     
