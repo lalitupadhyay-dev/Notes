@@ -81,6 +81,44 @@ Let's see how HTTP evolved during the past years
     </html>
     ```
 
+### 1.1.4 HTTP/1.1
+
+- Introduced persistent connections i.e, 1 <code>**TCP Connection**</code> can handle multiple requests
+
+- <code>**Connection: keep-alive**</code> became the default behaviour
+
+- <code>**Host**</code> header was introduced, because multiple websites can run on 1 IP address, so <code>**Host**</code> header distinguishes which website client needs
+
+- Introduced <code>**Pipelining**</code> - A new request does not have to wait for previous request to finish, we hit 1 **URL** and everything loads quickly <code>**HTML, CSS, JS, Images, Videos... **</code> etc **(Speed Improved)**
+
+- 
+
+- HTTP Request & Response looked like this
+    ```js
+    // Request
+    GET /en-US/docs/ HTTP/1.1
+    Host: developer.mozilla.org
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0
+    Accept: text/html,application/xhtml+xml,application/xml;
+    Accept-Language: en-US,en;q=0.5
+    Accept-Encoding: gzip, deflate, br, zstd
+    Connection: keep-alive
+
+    // Response
+    HTTP/1.1 200 OK
+    accept-ranges: none
+    content-encoding: br
+    date: Tue, 01 Jul 2025 08:32:50 GMT
+    expires: Tue, 01 Jul 2025 09:26:50 GMT
+    cache-control: public, max-age=3600
+    age: 1926
+    last-modified: Sat, 28 Jun 2025 00:47:12 GMT
+    etag: W/"b55394ed2f274eea5d528cf6c91e1dcf"
+    content-type: text/html
+    vary: Accept-Encoding
+    content-length: 26178
+    ```
+
 ## HTTP Request
     
 ```js
