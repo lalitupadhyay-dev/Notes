@@ -42,6 +42,34 @@
          - <code>**Storing strings**</code>: (Looks similar with <span style="color: orange">**Java**</span>)
 
              <img src="./imgs/1.png" />
-      - Ownership Model
+
+      3. <code>**Ownership Model**</code>
+
+         - This model is for the variable whose value is stored on <code>**Heap**</code>
+
+         - Multiple <code>**variables (owners)**</code> cannot point to same location on <code>**Heap**</code>
+
+         - If the <code>**owner**</code> of the an allocated space on heap is deleted then allocated space will also be clear
+
+         - Code:
+            ```rs
+            let str: String = String::from("I am Lalit");
+            println!("{}", str);
+            ```
+            <img src="./imgs/2.png" />
+         
+         - If I assign the reference variable <code>**str**</code> to <code>**newStr**</code> then previous <code>**str**</code> will no longer be to accessible.
+
+         - Code:
+            ```rs
+            let newStr: String = str;
+            println!("{}", newStr);
+
+            println!("{}", str); // This line will throw error
+            ```
+            <img src="./imgs/3.png" style="border: 1px solid #fff"/>
+            <img src="./imgs/4.png"/>
+
+
       - Borrowing and Referencing
       - Lifetimes
