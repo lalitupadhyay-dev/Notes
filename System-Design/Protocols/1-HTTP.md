@@ -56,12 +56,16 @@ Let's see how HTTP evolved during the past years
     - POST
     - HEAD
 
-- Supported different content types with the help of <code>Content-Type</code> header
+- Supported different content types with the help of <code>**Content-Type**</code> header
     - HTML
     - CSS
     - PDFs
     - Images
     - Videos
+
+- Basic <code>**caching**</code> was introduced with these headers:
+    - <code>**Expires**</code>: Tells the browser until what time it can use the cached file without asking the server again
+    - <code>**If-Modified-Since**</code>: Lets the browser ask the server to send the file only if it has changed since the last download
 
 - HTTP Request & Response looked like this
     ```js
@@ -91,7 +95,21 @@ Let's see how HTTP evolved during the past years
 
 - Introduced <code>**Pipelining**</code> - A new request does not have to wait for previous request to finish, we hit 1 **URL** and everything loads quickly <code>**HTML, CSS, JS, Images, Videos... **</code> etc **(Speed Improved)**
 
-- 
+- New <code>**HTTP methods**</code> were introduced:
+    - PUT
+    - DELETE
+    - OPTIONS
+    - TRACE
+
+- Chunked Transfer Encoding:
+    - Before this server must know the full size of response to send (like <code>**Content-Length: 1200**</code>)
+    
+    - A response header <code>**Transfer-Encoding: chunked**</code>, that tells the <code>**client**</code>, that response will come in chunks (like <code>**Event Streaming**</code>)
+
+    - This made responses faster
+
+- Caching improvements:
+    -
 
 - HTTP Request & Response looked like this
     ```js
