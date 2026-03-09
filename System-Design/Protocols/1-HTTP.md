@@ -95,7 +95,11 @@ Let's see how HTTP evolved during the past years
 
 - <code>**Host**</code> header was introduced, because multiple websites can run on 1 IP address, so <code>**Host**</code> header distinguishes which website client needs
 
-- Introduced <code>**Pipelining**</code> - A new request does not have to wait for previous request to finish, we hit 1 **URL** and everything loads quickly <code>**HTML, CSS, JS, Images, Videos... **</code> etc **(Speed Improved)**
+- Introduced <code>**Pipelining**</code> - A new request does not have to wait for previous request to finish, we hit 1 **URL** and everything loads quickly <code>**HTML, CSS, JS, Images, Videos... **</code> etc **(Speed Improved)**<br>
+
+    <span style="color: rgb(255, 127, 127)">Note 1:</span> *This slightly improved speed but if the first response is slow, then other responses will also be slow, because server has to send the responses in the **same order** as they requested, this is called <span style="color: rgb(255, 188, 87)">**"Head-of-Line Blocking"**</span>.*
+
+    <span style="color: rgb(255, 127, 127)">Note 2:</span> *<span style="color: rgb(255, 188, 87)">**"Pipelining"**</span> was less performant, so browser disabled it and opens several <code>**TCP Connections**</code> (probably 6 per domain) for requesting multiple required files.*
 
 - New <code>**HTTP methods**</code> were introduced:
   - PUT
@@ -115,26 +119,39 @@ Let's see how HTTP evolved during the past years
 
 ### 1.1.5 HTTP/2.0 
 
-## HTTP Request
+- <code>**Binary Protocol**</code>
 
-```js
-POST /users HTTP/1.1
+    - HTTP/1.1 was text-based, but this version used small binary frames internally to send, resulted in:
 
-Host: api.example.com
-Content-Type: application/json
-Authorization: Bearer token123
-Content-Length: 27
+        - Faster Processing
+        - Machine friendly
+    
+- <code>**Multiplexing**</code>
 
-{"name":"Lalit","age":25}
-```
+    - Now multiple requests can be sent over <code>**1 TCP Connection**</code>, response can be received in any order, resulted in:
 
-## HTTP Response
+        - Eliminated HTTP-level <span style="color: rgb(255, 188, 87)">**"Head-of-Line Blocking"**</span>
+        - Faster page load
+        - Single TCP Connection
 
-```js
-HTTP/1.1 200 OK
+- <code>**Header Compression**</code>
 
-Content-Type: application/json
-Content-Length: 34
+    - Compresses headers using <code>**HPACK**</code>
+    - Manages a <code>**Header Table**</code> to not send every header in every request
+    - This resulted in:
+        - Saving Network Bandwidth
 
-{"message":"User created"}
-```
+- <code>**Server Push**</code>
+
+    - Server can send resources before the client requests them; i.e., <code>**HTML**</code> file might need <code>**CSS**</code> or <code>**JS**</code> file, so server sends it automatically
+
+- <code>**Stream Prioritization**</code>
+
+    - Client can tell server which resources are more important
+
+
+- <code>**Limitation**</code>
+
+    - Still uses <code>**TCP**</code>, if any data-packet is lost whole <code>**Request-Response Stream**</code> has to wait
+
+    - This introduced <span style="color: rgb(255, 188, 87)">**"TCP-level Head-of-Line Blocking"**</span>
