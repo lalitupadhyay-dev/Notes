@@ -71,5 +71,19 @@
             <img src="./imgs/4.png"/>
 
 
-      - Borrowing and Referencing
+      4. <code>**Borrowing and Referencing**</code>
+
+         - Borrowing means giving the ownership to another variable with loosing the ownership from 1st variable.
+
+         - Code:
+            ```rs
+            let s1: String = String::from("Hi there!");
+            let s2: &String = &s1;
+
+            println!("{}", s1);
+            println!("{}", s2);
+            ```
+            <img src="./imgs/5.png" />
+
+
       - Lifetimes
