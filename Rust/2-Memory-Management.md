@@ -73,17 +73,45 @@
 
       4. <code>**Borrowing and Referencing**</code>
 
-         - Borrowing means giving the ownership to another variable with loosing the ownership from 1st variable.
+         <img src="./imgs/5.png" />
 
-         - Code:
+         - Types of references:
+            - Immutable references: <code>&str</code> (you can have unlimited simultaneous borrowers)
+
+               ```rs
+               // Created a string
+               let s1: String = String::from("Hi there!");
+
+               // Passed reference as immutable
+               let s2: &String = &s1;
+
+               // Both will print the same output
+               println!("{}", s1);
+               println!("{}", s2);
+               ```
+            - Mutable references: <code>&mut str</code> (you can have exactly one borrower)
+               
+               ```rs
+               // created a mutable string
+               let mut s5: String = String::from("I am learning Rust.");
+               println!("{s5}");
+
+               // borrowed the string with mutability
+               let s6: &mut String = &mut s5;
+
+               // mutated the string via "s6" - mutable reference
+               s6.push_str(" From Harkirat");
+               println!("{s6}");
+               ```
+         
+         - There can be either multiple readers <code>Immutable References</code> or a single writer <code>Mutable Reference</code>, both cannot be there in the code at same time.
+
+         - Code that will throw error:
             ```rs
-            let s1: String = String::from("Hi there!");
-            let s2: &String = &s1;
-
-            println!("{}", s1);
-            println!("{}", s2);
+            let r4 = &s;
+            let r5 = &mut s;
+            println!("{r4}, {r5}"); // compile error! (Lifetime of "r4" is not ended)
             ```
-            <img src="./imgs/5.png" />
 
 
       - Lifetimes
