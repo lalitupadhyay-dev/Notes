@@ -5,6 +5,7 @@
 - Makes the application secure
 
 - Offline analogy:
+
     - Show your ID card at office gate to enter
 
 ## Difference between Authentication & Authorization:
